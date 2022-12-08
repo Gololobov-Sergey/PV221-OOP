@@ -1,16 +1,26 @@
 #include<iostream>
 #include"Student.h"
 #include"Area.h"
+#include"Array.h"
 
 using namespace std;
 
 int main()
 {
 
-	Student st("Vasya", 20);
-	st.print();
-	st.setName("Petya");
-	st.print();
+	Array a;
+	a.set(50, 200);
+	a.print();
+
+	/*{
+		Student st("Vasya", 20);
+		st.print();
+		st.setName("Petya");
+		st.print();
+	}*/
+
+	/*size_t t = -1;
+	cout << t << endl;*/
 
 	//Area a;
 	//cout << Area::SquareRectangle(12, 34) << endl;

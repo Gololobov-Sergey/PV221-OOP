@@ -21,12 +21,20 @@ public:
 		count++;
 	}
 	
-	Student(const char* n, int a) : id(++lastID), age(0)/*, name(nullptr)*/
+	Student(const char* n, int a) : id(++lastID), age(0), name(nullptr)
 	{
+		cout << "Constructor 2 param" << endl;
 		setAge(a);
 		setName(n);
 		count++;
 	}
+
+	~Student()
+	{
+		delete name;
+		cout << "Destructor" << endl;
+	}
+
 
 	static int getCount()
 	{
@@ -62,23 +70,9 @@ public:
 		cout << "ID: " << id << ", Name: " << name << ", Age: " << age << endl;
 	}
 
-	void method(int a);
-
-
-	void method(int a, char b);
 };
 
 
 int Student::count = 0;
 
 int Student::lastID = 0;
-
-void Student::method(int a)
-{
-
-}
-
-inline void Student::method(int a, char b)
-{
-
-}

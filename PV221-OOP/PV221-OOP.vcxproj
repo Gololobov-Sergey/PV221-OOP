@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Area.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="PhoneBook.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include"Student.h"
 #include"Area.h"
 #include"Array.h"
+#include"PhoneBook.h"
 
 using namespace std;
 
@@ -20,6 +21,9 @@ int main()
 	srand(time(0));
 
 
+	PhoneBook ph;
+	ph.menu();
+
 	/*Array a(20);
 	a.set(0, 20);
 	a.print();
@@ -34,12 +38,12 @@ int main()
 	method = goodbye;
 	method();*/
 
-	{
+	/*{
 		Student st("Vasya", 20);
 		st.print();
 		Student st1;
 		st1.print();
-	}
+	}*/
 
 	/*size_t t = -1;
 	cout << t << endl;*/

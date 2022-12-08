@@ -28,12 +28,12 @@ public:
 };
 
 
-Array::Array() : m_nSize(0), m_aArr(nullptr) { }
+Array::Array() : Array(0){ }
 
 
 Array::Array(size_t size) : m_nSize(size)
 {
-	m_aArr = new int[m_nSize] {0};
+	m_aArr = (m_nSize > 0)? new int[m_nSize] {0} : nullptr;
 }
 
 

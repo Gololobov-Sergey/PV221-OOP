@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<cassert>
 
 using namespace std;
 
@@ -13,30 +14,45 @@ public:
 
 	Array(size_t size);
 
-	void set(int min = 0, int max = 9);
+	~Array();
 
-	void print();
+	void set(int iMin, int iMax) const;
+
+	void print() const;
+
+	size_t size() const;
+
+	int at(size_t index) const;
+
+	void sort(bool(*method)(int, int)) const;
 };
 
 
 Array::Array() : m_nSize(0), m_aArr(nullptr) { }
 
+
 Array::Array(size_t size) : m_nSize(size)
 {
-	m_aArr = new int[m_nSize];
+	m_aArr = new int[m_nSize] {0};
 }
 
 
-void Array::set(int min, int max)
+Array::~Array()
+{
+	delete[] m_aArr;
+}
+
+
+void Array::set(int iMin = 0, int iMax = 9) const
 {
 	for (size_t i = 0; i < m_nSize; i++)
 	{
-		m_aArr[i] = rand() % (max - min + 1) + min;
+		m_aArr[i] = rand() % (iMax - iMin + 1) + iMin;
 	}
 }
 
 
-void Array::print()
+void Array::print() const
 {
 	for (size_t i = 0; i < m_nSize; i++)
 	{
@@ -44,3 +60,53 @@ void Array::print()
 	}
 	cout << endl;
 }
+
+
+size_t Array::size() const
+{
+	return m_nSize;
+}
+
+
+int Array::at(size_t index) const
+{
+	assert(index < m_nSize);
+
+	return m_aArr[index];
+}
+
+
+bool ascending(int a, int b)
+{
+	return a > b;
+}
+
+bool descending(int a, int b)
+{
+	return a < b;
+}
+
+bool evenFirst(int a, int b)
+{
+	if (a % 2 == 0 && b % 2 == 1)
+		return false;
+	if (a % 2 == 1 && b % 2 == 0)
+		return true;
+	return ascending(a, b);
+}
+
+void Array::sort(bool(*method)(int, int) = ascending) const
+{
+	for (size_t i = 0; i < m_nSize - 1; i++)
+	{
+		for (size_t j = 0; j < m_nSize - i - 1; j++)
+		{
+			if (method(m_aArr[j], m_aArr[j + 1]))
+			{
+				swap(m_aArr[j], m_aArr[j + 1]);
+			}
+		}
+	}
+}
+
+

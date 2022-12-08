@@ -14,11 +14,9 @@ class Student
 
 public:
 
-	Student() : id(++lastID), age(0)
+	Student() : Student("No name", 0)
 	{
-		setName("No name");
 		cout << "Constructor" << endl;
-		count++;
 	}
 	
 	Student(const char* n, int a) : id(++lastID), age(0), name(nullptr)

@@ -5,19 +5,41 @@
 
 using namespace std;
 
+void hello()
+{
+	cout << "Hello" << endl;
+}
+
+void goodbye()
+{
+	cout << "Goodbye" << endl;
+}
+
 int main()
 {
+	srand(time(0));
 
-	Array a;
-	a.set(50, 200);
+
+	/*Array a(20);
+	a.set(0, 20);
 	a.print();
+	a.sort();
+	a.print();*/
 
-	/*{
+	// type (*namePointer)(param);
+
+	/*void(*method)();
+	method = hello;
+	method();
+	method = goodbye;
+	method();*/
+
+	{
 		Student st("Vasya", 20);
 		st.print();
-		st.setName("Petya");
-		st.print();
-	}*/
+		Student st1;
+		st1.print();
+	}
 
 	/*size_t t = -1;
 	cout << t << endl;*/

@@ -3,6 +3,7 @@
 #include"Area.h"
 #include"Array.h"
 #include"PhoneBook.h"
+#include"Menu.h"
 
 using namespace std;
 
@@ -21,8 +22,19 @@ int main()
 	srand(time(0));
 
 
-	PhoneBook ph;
-	ph.menu();
+	int c = Menu::select_vertical({ "Add", "Edit", "Del", "Exit" }, HorizontalAlignment::Center);
+
+	/*int a = 3;     int b = 3;
+	int* pa = &a;  int& rb = b;
+	*pa = 5;       rb = 5;
+
+	int* const d = &a;    const int& rd = a;
+	d = &b;
+	pa = &b;       rb = a;*/
+
+
+	/*PhoneBook ph;
+	ph.menu();*/
 
 	/*Array a(20);
 	a.set(0, 20);

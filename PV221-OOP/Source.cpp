@@ -22,7 +22,7 @@ int main()
 	srand(time(0));
 
 
-	int c = Menu::select_vertical({ "Add", "Edit", "Del", "Exit" }, HorizontalAlignment::Center);
+	//int c = Menu::select_vertical({ "Add", "Edit", "Del", "Exit" }, HorizontalAlignment::Center);
 
 	/*int a = 3;     int b = 3;
 	int* pa = &a;  int& rb = b;
@@ -33,8 +33,8 @@ int main()
 	pa = &b;       rb = a;*/
 
 
-	/*PhoneBook ph;
-	ph.menu();*/
+	PhoneBook ph;
+	ph.menu();
 
 	/*Array a(20);
 	a.set(0, 20);

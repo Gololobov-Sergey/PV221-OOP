@@ -19,11 +19,12 @@ public:
 		cout << "Constructor" << endl;
 	}
 	
-	Student(const char* n, int a) : id(++lastID), age(0), name(nullptr)
+	Student(const char* n, int age) : id(++lastID), age(0), name(nullptr)
 	{
+		this->age = age;
 		cout << "Constructor 2 param" << endl;
-		setAge(a);
-		setName(n);
+		this->setAge(age);
+		this->setName(n);
 		count++;
 	}
 

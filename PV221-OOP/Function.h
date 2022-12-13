@@ -19,3 +19,18 @@ enum ConsoleColor
 void SetColor(int text, int background);
 
 void gotoxy(int x, int y);
+
+
+template<class T>
+void pushArray(T*& arr, size_t& size, T elem)
+{
+	T* temp = new T[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[size] = elem;
+	size++;
+	delete[] arr;
+	arr = temp;
+}

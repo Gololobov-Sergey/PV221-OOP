@@ -17,12 +17,12 @@ public:
 		
 	}
 
-	Abonent(const char* _fio, const char* _phone)
+	Abonent(const char* fio, const char* phone)
 	{
-		fio = new char[strlen(_fio) + 1];
-		strcpy_s(fio, strlen(_fio) + 1,_fio);
-		phone = new char[strlen(_phone) + 1];
-		strcpy_s(phone, strlen(_phone) + 1, _phone);
+		this->fio = new char[strlen(fio) + 1];
+		strcpy_s(this->fio, strlen(fio) + 1,fio);
+		this->phone = new char[strlen(phone) + 1];
+		strcpy_s(this->phone, strlen(phone) + 1, phone);
 	}
 
 	void print()
@@ -30,6 +30,7 @@ public:
 		cout << setw(15) << left << fio << setw(15) << right << phone << endl;
 	}
 
+	//Abonent
 };
 
 
@@ -82,10 +83,11 @@ inline void PhoneBook::print()
 
 void PhoneBook::menu()
 {
+	
 	do
 	{
 		system("cls");
-		int c = Menu::select_vertical({ "Add", "Del", "Print567890-9876", "Exit" }, HorizontalAlignment::Left, 2);
+		int c = Menu::select_vertical({ "Add", "Del", "Print", "Exit" }, HorizontalAlignment::Left, 2);
 		switch (c)
 		{
 		case 0: add(); break;

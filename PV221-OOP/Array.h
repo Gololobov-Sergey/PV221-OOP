@@ -12,7 +12,9 @@ class Array
 public:
 	Array();
 
-	Array(size_t size);
+	explicit Array(size_t size);
+
+	Array(const Array& obj);
 
 	~Array();
 
@@ -34,12 +36,25 @@ Array::Array() : Array(0){ }
 Array::Array(size_t size) : m_nSize(size)
 {
 	m_aArr = (m_nSize > 0)? new int[m_nSize] {0} : nullptr;
+	cout << "Constructor" << endl;
+}
+
+Array::Array(const Array& obj)
+{
+	m_nSize = obj.m_nSize;
+	m_aArr = new int[m_nSize];
+	for (size_t i = 0; i < m_nSize; i++)
+	{
+		m_aArr[i] = obj.m_aArr[i];
+	}
+	cout << "Constructor copy" << endl;
 }
 
 
 Array::~Array()
 {
 	delete[] m_aArr;
+	cout << "Destructor" << endl;
 }
 
 

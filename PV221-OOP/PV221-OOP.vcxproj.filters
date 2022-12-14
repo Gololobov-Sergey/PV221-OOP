@@ -47,5 +47,8 @@
     <ClInclude Include="Function.h">
       <Filter>Library</Filter>
     </ClInclude>
+    <ClInclude Include="Fraction.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

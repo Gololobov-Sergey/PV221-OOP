@@ -4,8 +4,25 @@
 #include"Array.h"
 #include"PhoneBook.h"
 #include"Menu.h"
+#include"Fraction.h"
 
 using namespace std;
+
+
+void test(Array a)
+{
+	a.print();
+}
+
+void test(Student a)
+{
+	a.print();
+}
+
+void test(Fraction a)
+{
+	a.print();
+}
 
 void hello()
 {
@@ -20,6 +37,34 @@ void goodbye()
 int main()
 {
 	srand(time(0));
+	//{
+	//	Array a(20);
+	//	a.set(0, 20);
+	//	a.print();
+	//	//test("Vasya", 20);
+
+	//	////1
+	//	//test(a);
+	//	//a.print();
+
+	//	//2
+	//	/*Array b(a);
+	//	b.print();
+	//	a.print();*/
+	//}
+
+
+
+
+	//Fraction f1;
+	//Fraction f2(5);
+	//Fraction f3(8, 4);
+
+	//Fraction f4 = f3.sum(f2); //sum(f1, f2);
+	//Fraction f5 = f4.normal();
+	//f4.print();
+	//f5.print();
+	//test(10);
 
 
 	//int c = Menu::select_vertical({ "Add", "Edit", "Del", "Exit" }, HorizontalAlignment::Center);
@@ -33,8 +78,8 @@ int main()
 	pa = &b;       rb = a;*/
 
 
-	PhoneBook ph;
-	ph.menu();
+	//PhoneBook ph;
+	//ph.menu(); //menu(ph)
 
 	/*Array a(20);
 	a.set(0, 20);
@@ -50,12 +95,16 @@ int main()
 	method = goodbye;
 	method();*/
 
-	/*{
+	{
 		Student st("Vasya", 20);
+		st.setMark(10);
+		st.setMark(11);
+		st.setMark(12);
+		st.setMark(11);
 		st.print();
-		Student st1;
-		st1.print();
-	}*/
+		test(st);
+		st.print();
+	}
 
 	/*size_t t = -1;
 	cout << t << endl;*/
@@ -68,7 +117,7 @@ int main()
 	Student st("Vasya", 2000000000);
 	st.print();
 	cout << "Count: " << st.getCount() << endl;
-	
+
 	Student st1("Petya", 20);
 	st1.print();
 	cout << "Count: " << st.getCount() << endl;*/

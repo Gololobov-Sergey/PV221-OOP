@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include"Function.h"
 
 using namespace std;
 
@@ -9,8 +10,10 @@ class Student
 	const int id;
 	int age;
 	char* name;
-	static int count;
+	static size_t count;
 	static int lastID;
+	int* mark;
+	size_t sizeMark;
 
 public:
 
@@ -19,7 +22,7 @@ public:
 		cout << "Constructor" << endl;
 	}
 	
-	Student(const char* n, int age) : id(++lastID), age(0), name(nullptr)
+	Student(const char* n, int age) : id(++lastID), age(0), name(nullptr), mark(nullptr), sizeMark(0)
 	{
 		this->age = age;
 		cout << "Constructor 2 param" << endl;
@@ -28,14 +31,28 @@ public:
 		count++;
 	}
 
+	Student(const Student& obj) : id(obj.id), name(nullptr)
+	{
+		age = obj.age;
+		setName(obj.name);
+		sizeMark = obj.sizeMark;
+		mark = new int[sizeMark];
+		for (size_t i = 0; i < sizeMark; i++)
+		{
+			mark[i] = obj.mark[i];
+		}
+		count++;
+	}
+
 	~Student()
 	{
 		delete name;
+		delete[] mark;
 		cout << "Destructor" << endl;
 	}
 
 
-	static int getCount()
+	static size_t getCount()
 	{
 		return count;
 	}
@@ -64,14 +81,25 @@ public:
 		return name;
 	}
 
+	void setMark(int mark)
+	{
+		pushArray(this->mark, sizeMark, mark);
+	}
+
 	void print() const
 	{
 		cout << "ID: " << id << ", Name: " << name << ", Age: " << age << endl;
+		cout << "Mark: ";
+		for (size_t i = 0; i < sizeMark; i++)
+		{
+			cout << mark[i] << " ";
+		}
+		cout << endl;
 	}
 
 };
 
 
-int Student::count = 0;
+size_t Student::count = 0;
 
 int Student::lastID = 0;

@@ -5,6 +5,7 @@
 #include"PhoneBook.h"
 #include"Menu.h"
 #include"Fraction.h"
+#include"House.h"
 
 using namespace std;
 
@@ -37,6 +38,15 @@ void goodbye()
 int main()
 {
 	srand(time(0));
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+
+	House house("м. Миколаїв, вул. Садова, 15", 2, 3, 18);
+	house.menu();
+
+	
+
 	//{
 	//	Array a(20);
 	//	a.set(0, 20);
@@ -95,7 +105,7 @@ int main()
 	method = goodbye;
 	method();*/
 
-	{
+	/*{
 		Student st("Vasya", 20);
 		st.setMark(10);
 		st.setMark(11);
@@ -104,7 +114,7 @@ int main()
 		st.print();
 		test(st);
 		st.print();
-	}
+	}*/
 
 	/*size_t t = -1;
 	cout << t << endl;*/

@@ -33,7 +33,6 @@ public:
 	//Abonent
 };
 
-
 class PhoneBook
 {
 	Abonent** abonents;

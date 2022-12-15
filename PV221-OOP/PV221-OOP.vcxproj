@@ -136,6 +136,7 @@
     <ClInclude Include="Array.h" />
     <ClInclude Include="Fraction.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="House.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PhoneBook.h" />
     <ClInclude Include="Student.h" />

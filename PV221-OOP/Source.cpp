@@ -6,6 +6,8 @@
 #include"Menu.h"
 #include"Fraction.h"
 #include"House.h"
+#include"Friends.h"
+#include"Point.h"
 
 using namespace std;
 
@@ -38,12 +40,66 @@ void goodbye()
 int main()
 {
 	srand(time(0));
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	//cout.setf(ios::showpos);
+	//SetConsoleCP(1251);
+	//SetConsoleOutputCP(1251);
+
+	Point p1(2, 5);
+	Point p2(3, 4);
+	Point p3 = -p1 + p2;
+	
+	(++p1).print();
+	(p1++).print();
+	p1.print();
+	p1 += p2; // p1 = p1 + p2;
+	p1 = p2 * 5;
+	p1.print();
 
 
-	House house("м. Миколаїв, вул. Садова, 15", 2, 3, 18);
-	house.menu();
+
+	// ::  ?: sizeof() *  .
+	// + , - , ++, --
+	// = , + , - , * , / , % , += , -= , *= , /= , %= 
+	// !
+	// == , != , < , > , <= , >= , &&(and) , ||(or) , ^(xor)
+
+
+	//Fraction f1(1, 2);
+	//Fraction f2(1, 4);
+	//Fraction f3 = f1.sum(f2);
+	////Fraction f3 = +f1 + f2; // f1.operator+=(f2)
+	//
+
+	//int a = 5;
+	//cout << a << endl;   //5
+	//cout << ++a << endl; //6
+	//cout << a++ << endl; //6
+	//cout << a << endl;   //7
+
+	//if (-3 and 1)
+	//{
+	//	cout << "True" << endl;
+	//}
+	//else
+	//{
+	//	cout << "False" << endl;
+	//}
+
+	/*Array a(20);
+	a.set(0, 20);
+	a.print();
+	Visualisator vis;
+	vis.printArrayInStarLine(a);*/
+
+
+	/*Temperature t(-8);
+	Humidity h(30);
+
+	WeatherInformer(t, h);*/
+
+
+	/*House house("м. Миколаїв, вул. Садова, 15", 2, 3, 18);
+	house.menu();*/
 
 	
 
@@ -129,6 +185,7 @@ int main()
 	cout << "Count: " << st.getCount() << endl;
 
 	Student st1("Petya", 20);
+	st = st1;
 	st1.print();
 	cout << "Count: " << st.getCount() << endl;*/
 

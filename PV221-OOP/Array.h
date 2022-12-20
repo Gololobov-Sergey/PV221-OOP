@@ -4,6 +4,17 @@
 
 using namespace std;
 
+class Array;
+
+class Visualisator
+{
+public:
+	void printArrayInStarLine(Array arr);
+
+	void method(Array a);
+};
+
+
 class Array
 {
 	int* m_aArr;
@@ -27,6 +38,12 @@ public:
 	int at(size_t index) const;
 
 	void sort(bool(*method)(int, int)) const;
+
+	//friend void printArrayInStarLine(Array arr);
+
+	friend class Visualisator;
+
+	//friend void Visualisator::printArrayInStarLine(Array arr);
 };
 
 
@@ -124,4 +141,30 @@ void Array::sort(bool(*method)(int, int) = ascending) const
 	}
 }
 
+//void printArrayInStarLine(Array arr)
+//{
+//	//*******************
+//	for (size_t i = 0; i < arr.m_nSize; i++)
+//	{
+//		cout << arr.m_aArr[i] << " ";
+//	}
+//	cout << endl;
+//	//*******************
+//}
 
+
+void Visualisator::printArrayInStarLine(Array arr)
+{
+	//*******************
+	for (size_t i = 0; i < arr.m_nSize; i++)
+	{
+		cout << arr.m_aArr[i] << " ";
+	}
+	cout << endl;
+	//*******************
+}
+
+void Visualisator::method(Array a)
+{
+	cout << a.size() << endl;
+}

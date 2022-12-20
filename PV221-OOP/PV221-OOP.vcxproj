@@ -135,10 +135,12 @@
     <ClInclude Include="Area.h" />
     <ClInclude Include="Array.h" />
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="Friends.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PhoneBook.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>

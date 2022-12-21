@@ -1,4 +1,6 @@
 #include<iostream>
+#include<fstream>
+
 #include"Student.h"
 #include"Area.h"
 #include"Array.h"
@@ -8,6 +10,8 @@
 #include"House.h"
 #include"Friends.h"
 #include"Point.h"
+#include"Apple.h"
+
 
 using namespace std;
 
@@ -44,24 +48,61 @@ int main()
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
 
-	Point p1(2, 5);
-	Point p2(3, 4);
-	Point p3 = -p1 + p2;
+
+	Apple a1("red", 10);
+	Apple a2("green", 12);
+
+	Kompot k;
+	k = a1 + a2;
+	cout << k << endl;
+
+	Apple a3("yellow", 11);
+
+	k += a3;
+
+	cout << k << endl;
+
+
+
+	//Point p1(1, 1);
+	//Point p2(3, 4);
+	//Point p3 = -p1 + p2;
 	
-	(++p1).print();
-	(p1++).print();
-	p1.print();
-	p1 += p2; // p1 = p1 + p2;
-	p1 = p2 * 5;
-	p1.print();
+	//(++p1).print();
+	//(p1++).print();
+	//p1.print();
+	//p1 += p2; // p1 = p1 + p2;
+	//p1 = p2 * 5;
+	//p1 = 5 * p2;
+	//p1.print();
 
+	/*cin >> p1;
+	cout << p1 << endl;
 
+	p1(4, 5);
+
+	cout << p1["x"] << endl;
+	cout << p1["y"] << endl;
+	cout << p1["length"] << endl;*/
+
+	//ofstream fout("point.txt", ios::app);
+	//fout << p1 << endl << p2 << endl;
+
+	/*if (p1 && p2)
+	{
+		cout << "True" << endl;
+	}
+	else
+	{
+		cout << "False" << endl;
+	}*/
 
 	// ::  ?: sizeof() *  .
 	// + , - , ++, --
 	// = , + , - , * , / , % , += , -= , *= , /= , %= 
 	// !
 	// == , != , < , > , <= , >= , &&(and) , ||(or) , ^(xor)
+	// type, << , >> , () , []
 
 
 	//Fraction f1(1, 2);
@@ -88,7 +129,11 @@ int main()
 	/*Array a(20);
 	a.set(0, 20);
 	a.print();
-	Visualisator vis;
+	a[2] = 100;
+	cout << a[2] << endl;*/
+
+
+	/*Visualisator vis;
 	vis.printArrayInStarLine(a);*/
 
 

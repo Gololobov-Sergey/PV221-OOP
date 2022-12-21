@@ -45,6 +45,7 @@ class PhoneBook
 
 public:
 	PhoneBook() : abonents(nullptr), size(0) { }
+	~PhoneBook();
 	void menu();
 };
 
@@ -78,6 +79,15 @@ inline void PhoneBook::print()
 		abonents[i]->print();
 	}
 	system("pause");
+}
+
+inline PhoneBook::~PhoneBook()
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		delete abonents[i];
+	}
+	delete[] abonents;
 }
 
 void PhoneBook::menu()

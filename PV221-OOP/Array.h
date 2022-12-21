@@ -44,6 +44,8 @@ public:
 	friend class Visualisator;
 
 	//friend void Visualisator::printArrayInStarLine(Array arr);
+
+	int& operator[](int index);
 };
 
 
@@ -139,6 +141,11 @@ void Array::sort(bool(*method)(int, int) = ascending) const
 			}
 		}
 	}
+}
+
+int& Array::operator[](int index)
+{
+	return m_aArr[index];
 }
 
 //void printArrayInStarLine(Array arr)

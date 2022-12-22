@@ -11,6 +11,7 @@
 #include"Friends.h"
 #include"Point.h"
 #include"Apple.h"
+#include"String.h"
 
 
 using namespace std;
@@ -49,7 +50,19 @@ int main()
 	//SetConsoleOutputCP(1251);
 
 
-	Apple a1("red", 10);
+	//String st;
+	//String st1("dfgh");
+	//cout << st1 << endl;
+	//cin >> st;
+	//st += "st1"; // st.op+("st1")
+	//st += st1;
+	//st[3] = 'F';
+	//char f = st[3];
+	//st.find("sdfg");
+	//st.find('A');
+
+	cout << ((string)"aaaaa").compare("aaaa") << endl;
+	/*Apple a1("red", 10);
 	Apple a2("green", 12);
 
 	Kompot k;
@@ -62,7 +75,11 @@ int main()
 
 	cout << k << endl;
 
+	Apple a4("gniloe", 14);
 
+	k += a4;
+
+	cout << k << endl;*/
 
 	//Point p1(1, 1);
 	//Point p2(3, 4);

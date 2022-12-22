@@ -142,6 +142,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PhoneBook.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>

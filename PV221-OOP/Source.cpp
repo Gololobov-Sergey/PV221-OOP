@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<fstream>
 
@@ -12,6 +13,7 @@
 #include"Point.h"
 #include"Apple.h"
 #include"String.h"
+#include"var.h"
 
 
 using namespace std;
@@ -49,6 +51,37 @@ int main()
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
 
+	char buff[80];
+	_itoa(2654456755, buff, 100);
+	cout << buff << endl;
+
+	var a(10);
+	var b(1.55);
+	var c("12.2");
+
+	a = c;
+
+	cout << a << endl;
+	cout << b << endl;
+	cout << c << endl;
+
+	cout << a + a << endl;
+	cout << a + b << endl;
+	cout << a + c << endl;
+
+	cout << b + a << endl;
+	cout << b + b << endl;
+	cout << b + c << endl;
+
+	/*void* a = new int;
+	void* b = new double;
+	void* c = new char[10];
+	*(int*)a = 10;
+
+	int s(2);
+	int m(s);
+	
+	m = s;*/
 
 	//String st;
 	//String st1("dfgh");
@@ -61,7 +94,7 @@ int main()
 	//st.find("sdfg");
 	//st.find('A');
 
-	cout << ((string)"aaaaa").compare("aaaa") << endl;
+	//cout << ((string)"aaaA").compare("aaaa") << endl;
 	/*Apple a1("red", 10);
 	Apple a2("green", 12);
 

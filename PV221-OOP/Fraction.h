@@ -14,7 +14,7 @@ class Fraction
 public:
 	Fraction() : Fraction(0)	{ }
 
-	explicit Fraction(int numerator) : Fraction(numerator, 1) {}
+	/*explicit*/ Fraction(int numerator) : Fraction(numerator, 1) {}
 
 	Fraction(int numerator, int denominator)
 	{

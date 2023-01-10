@@ -40,3 +40,9 @@ String::String()
 {
 	
 }
+
+ostream& operator<<(ostream& out, const String& str)
+{
+	out << str.str;
+	return out;
+}

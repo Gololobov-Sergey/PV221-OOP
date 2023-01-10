@@ -67,6 +67,8 @@ inline void PhoneBook::add()
 
 inline void PhoneBook::del()
 {
+
+
 }
 
 inline void PhoneBook::print()

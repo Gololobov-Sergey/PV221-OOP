@@ -18,8 +18,8 @@
 
 using namespace std;
 
-
-void test(Array a)
+template<class T>
+void test(Array<T> a)
 {
 	a.print();
 }
@@ -51,15 +51,20 @@ int main()
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
 
-	char buff[80];
+
+	Array<Apple> a(10);
+	a.set();
+	a.print();
+	//a[2] = 100;
+	//cout << a[2] << endl;
+
+	/*char buff[80];
 	_itoa(2654456755, buff, 100);
 	cout << buff << endl;
 
 	var a(10);
 	var b(1.55);
 	var c("12.2");
-
-	a = c;
 
 	cout << a << endl;
 	cout << b << endl;
@@ -71,7 +76,7 @@ int main()
 
 	cout << b + a << endl;
 	cout << b + b << endl;
-	cout << b + c << endl;
+	cout << b + c << endl;*/
 
 	/*void* a = new int;
 	void* b = new double;

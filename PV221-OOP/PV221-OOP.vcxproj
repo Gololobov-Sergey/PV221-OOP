@@ -139,6 +139,7 @@
     <ClInclude Include="Friends.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="House.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PhoneBook.h" />
     <ClInclude Include="Point.h" />

@@ -4,6 +4,7 @@
 
 #include"Menu.h"
 #include"Function.h"
+#include"Array.h"
 
 using namespace std;
 
@@ -16,8 +17,15 @@ public:
 	Human();
 	Human(const char* fullName, bool responsible);
 	~Human();
+	Human(const Human& h);
+	Human& operator=(const Human& h);
+	void setName(const char* fullName);
+	void setResponsible(bool res);
 	const char* getFullName() const;
+	bool getResponsible() const;
 	void print();
+	friend ostream& operator<<(ostream& out, const Human& h);
+	friend istream& operator>>(istream& in, Human& h);
 };
 
 
@@ -25,8 +33,7 @@ Human::Human() : Human("", false) {}
 
 Human::Human(const char* fullName, bool responsible = false) : responsible(responsible)
 {
-	this->fullName = new char[strlen(fullName) + 1];
-	strcpy_s(this->fullName, strlen(fullName) + 1, fullName);
+	setName(fullName);
 }
 
 Human::~Human()
@@ -34,20 +41,67 @@ Human::~Human()
 	delete fullName;
 }
 
+Human::Human(const Human& h)
+{
+	setName(h.getFullName());
+	setResponsible(h.getResponsible());
+}
+
+
+Human& Human::operator=(const Human& h)
+{
+	if (this == &h)
+		return *this;
+
+	delete fullName;
+
+	setName(h.getFullName());
+	setResponsible(h.getResponsible());
+
+	return *this;
+}
+
+bool Human::getResponsible() const
+{
+	return responsible;
+}
+
+void Human::setResponsible(bool res)
+{
+	responsible = res;
+}
+
+void Human::setName(const char* fullName)
+{
+	this->fullName = new char[strlen(fullName) + 1];
+	strcpy_s(this->fullName, strlen(fullName) + 1, fullName);
+}
 
 const char* Human::getFullName() const
 {
 	return fullName;
 }
 
-
+istream& operator>>(istream& in, Human& h)
+{
+	char buff[80];
+	cout << "Ім'я : ";
+	in.getline(buff, 80);
+	h.setName(buff);
+	cout << "Відповідальний? y/n :";
+	char r;
+	in >> r;
+	h.setResponsible((r == 'y') ? true : false);
+	return in;
+}
 
 
 
 class Room
 {
-	Human* residents;
-	size_t sizeResidents;
+	Array<Human> residents;
+	//Human* residents;
+	//size_t sizeResidents;
 	size_t number;
 	size_t area;
 
@@ -57,7 +111,7 @@ public:
 	~Room();
 	Room& operator=(const Room& obj);
 	void addResidents();
-	void addResidents(Human h);
+	void addResidents(const Human& h);
 	void delResidents();
 	void print();
 	void printResponsible();
@@ -66,8 +120,7 @@ public:
 
 Room::Room() : Room(0, 0) {}
 
-Room::Room(size_t number, size_t area) : 
-	number(number), area(area), residents(nullptr), sizeResidents(0)
+Room::Room(size_t number, size_t area) : number(number), area(area)
 {
 
 }
@@ -83,23 +136,38 @@ Room& Room::operator=(const Room& obj)
 	if (this == &obj)
 		return *this;
 
-	delete[] residents;
+	//delete[] residents;
 
-	sizeResidents = obj.sizeResidents;
-	residents = (sizeResidents)? new Human[sizeResidents] : nullptr;
-	for (size_t i = 0; i < sizeResidents; i++)
+	//sizeResidents = obj.sizeResidents;
+	//residents = (sizeResidents)? new Human[sizeResidents] : nullptr;
+	/*for (size_t i = 0; i < sizeResidents; i++)
 	{
 		residents[i] = obj.residents[i];
-	}
+	}*/
+	residents = obj.residents;
 	area = obj.area;
 	number = obj.number;
 
 	return *this;
 }
 
+void Room::addResidents()
+{
+	cout << "Додавання мешканця: " << endl;
+	Human h;
+	cin >> h;
+	addResidents(h);
+}
+
+
+void Room::addResidents(const Human& h)
+{
+	residents.push(h);
+}
+
 void Room::printResponsible()
 {
-	cout << setw(4) << number << setw(20) << left << ((residents)? residents[0].getFullName() : " ") << " " << setw(6) << right << area << endl;
+	cout << setw(4) << number << setw(20) << left << ((residents.count())? residents[0].getFullName() : " ") << " " << setw(6) << right << area << endl;
 }
 
 void Room::menu()
@@ -115,7 +183,7 @@ void Room::menu()
 			HorizontalAlignment::Center);
 		switch (choice)
 		{
-		case 0:                 break;
+		case 0: addResidents();     break;
 		case 1: /*print();*/        break;
 		case 2: /*workWithRoom()*/; break;
 		case 3: return;
@@ -188,7 +256,7 @@ void House::workWithRoom()
 	size_t index;
 	cin >> index;
 	cin.ignore();
-	rooms[index].menu();
+	rooms[index - 1].menu();
 }
 
 void House::menu()

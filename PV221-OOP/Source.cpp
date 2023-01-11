@@ -48,13 +48,15 @@ int main()
 {
 	srand(time(0));
 	//cout.setf(ios::showpos);
-	//SetConsoleCP(1251);
-	//SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
 
-	Array<Apple> a(10);
-	a.set();
-	a.print();
+	//Array<Apple> a(10);
+	////a.set();
+	//a[0] = Apple("red", 12);
+	//a.print();
+
 	//a[2] = 100;
 	//cout << a[2] << endl;
 
@@ -198,8 +200,8 @@ int main()
 	WeatherInformer(t, h);*/
 
 
-	/*House house("м. Миколаїв, вул. Садова, 15", 2, 3, 18);
-	house.menu();*/
+	House house("м. Миколаїв, вул. Садова, 15", 2, 5, 10);
+	house.menu();
 
 	
 

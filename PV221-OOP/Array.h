@@ -18,8 +18,8 @@ using namespace std;
 template<class T>
 class Array
 {
-	T* m_aArr;
-	size_t m_nSize;
+	T* arr;
+	size_t size;
 
 public:
 	Array();
@@ -30,12 +30,15 @@ public:
 
 	~Array();
 
+	Array<T>& operator=(const Array<T>& obj);
+
 	void set(T iMin, T iMax) const;
+
 	void set() const;
 
 	void print() const;
 
-	size_t size() const;
+	size_t count() const;
 
 	T at(size_t index) const;
 
@@ -48,26 +51,31 @@ public:
 	//friend void Visualisator::printArrayInStarLine(Array arr);
 
 	T& operator[](int index);
+
+	void push(const T& value);
+
+	void remove(size_t index);
+
 };
 
 template<class T>
 Array<T>::Array() : Array(0){ }
 
 template<class T>
-Array<T>::Array(size_t size) : m_nSize(size)
+Array<T>::Array(size_t size) : size(size)
 {
-	m_aArr = (m_nSize > 0)? new T[m_nSize] : nullptr;
+	arr = (size > 0)? new T[size] : nullptr;
 	//cout << "Constructor" << endl;
 }
 
 template<class T>
 Array<T>::Array(const Array<T>& obj)
 {
-	m_nSize = obj.m_nSize;
-	m_aArr = new T[m_nSize];
-	for (size_t i = 0; i < m_nSize; i++)
+	size = obj.size;
+	arr = new T[size];
+	for (size_t i = 0; i < size; i++)
 	{
-		m_aArr[i] = obj.m_aArr[i];
+		arr[i] = obj.arr[i];
 	}
 	//cout << "Constructor copy" << endl;
 }
@@ -75,26 +83,43 @@ Array<T>::Array(const Array<T>& obj)
 template<class T>
 Array<T>::~Array()
 {
-	delete[] m_aArr;
+	delete[] arr;
 	//cout << "Destructor" << endl;
+}
+
+template<class T>
+Array<T>& Array<T>::operator=(const Array<T>& obj)
+{
+	if (this == &obj)
+		return *this;
+
+	delete[] arr;
+	size = obj.size;
+	arr = new T[size];
+	for (size_t i = 0; i < size; i++)
+	{
+		arr[i] = obj.arr[i];
+	}
+
+	return *this;
 }
 
 template<class T>
 void Array<T>::set(T iMin, T iMax) const
 {
 	cout << "Array : " << typeid(T).name() << endl;
-	for (size_t i = 0; i < m_nSize; i++)
+	for (size_t i = 0; i < size; i++)
 	{
-		m_aArr[i] = rand() % (int)(iMax - iMin + 1) + iMin;
+		arr[i] = rand() % (int)(iMax - iMin + 1) + iMin;
 	}
 }
 
 template<>
 void Array<double>::set(double iMin, double iMax) const
 {
-	for (size_t i = 0; i < m_nSize; i++)
+	for (size_t i = 0; i < size; i++)
 	{
-		m_aArr[i] = 10 * (rand() % (int)(iMax - iMin + 1) + iMin)/ 9.;
+		arr[i] = 10 * (rand() % (int)(iMax - iMin + 1) + iMin)/ 9.;
 	}
 }
 
@@ -102,34 +127,34 @@ void Array<double>::set(double iMin, double iMax) const
 template<>
 void Array<Apple>::set() const
 {
-	for (size_t i = 0; i < m_nSize; i++)
+	for (size_t i = 0; i < size; i++)
 	{
-		m_aArr[i] = Apple("red", rand() % 15 + 1);
+		arr[i] = Apple("red", rand() % 15 + 1);
 	}
 }
 
 template<class T>
 void Array<T>::print() const
 {
-	for (size_t i = 0; i < m_nSize; i++)
+	for (size_t i = 0; i < size; i++)
 	{
-		cout << m_aArr[i] << " ";
+		cout << arr[i] << " ";
 	}
 	cout << endl;
 }
 
 template<class T>
-size_t Array<T>::size() const
+size_t Array<T>::count() const
 {
-	return m_nSize;
+	return size;
 }
 
 template<class T>
 T Array<T>::at(size_t index) const
 {
-	assert(index < m_nSize);
+	assert(index < size);
 
-	return m_aArr[index];
+	return arr[index];
 }
 
 template<class T>
@@ -157,13 +182,13 @@ bool evenFirst(T a, T b)
 template<class T>
 void Array<T>::sort(bool(*method)(T, T)) const
 {
-	for (size_t i = 0; i < m_nSize - 1; i++)
+	for (size_t i = 0; i < size - 1; i++)
 	{
-		for (size_t j = 0; j < m_nSize - i - 1; j++)
+		for (size_t j = 0; j < size - i - 1; j++)
 		{
-			if (method(m_aArr[j], m_aArr[j + 1]))
+			if (method(arr[j], arr[j + 1]))
 			{
-				swap(m_aArr[j], m_aArr[j + 1]);
+				swap(arr[j], arr[j + 1]);
 			}
 		}
 	}
@@ -172,15 +197,46 @@ void Array<T>::sort(bool(*method)(T, T)) const
 template<class T>
 T& Array<T>::operator[](int index)
 {
-	return m_aArr[index];
+	return arr[index];
+}
+
+template<class T>
+void Array<T>::push(const T& value)
+{
+	T* newArr = new T[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		newArr[i] = arr[i];
+	}
+	newArr[size] = value;
+	size++;
+	delete[] arr;
+	arr = newArr;
+}
+
+template<class T>
+void Array<T>::remove(size_t index)
+{
+	T* newArr = new T[size - 1];
+	for (size_t i = 0; i < index; i++)
+	{
+		newArr[i] = arr[i];
+	}
+	for (size_t i = index+1; i < size; i++)
+	{
+		newArr[i-1] = arr[i];
+	}
+	delete[] arr;
+	size--;
+	arr = newArr;
 }
 
 //void printArrayInStarLine(Array arr)
 //{
 //	//*******************
-//	for (size_t i = 0; i < arr.m_nSize; i++)
+//	for (size_t i = 0; i < arr.size; i++)
 //	{
-//		cout << arr.m_aArr[i] << " ";
+//		cout << arr.arr[i] << " ";
 //	}
 //	cout << endl;
 //	//*******************
@@ -190,9 +246,9 @@ T& Array<T>::operator[](int index)
 //void Visualisator::printArrayInStarLine(Array arr)
 //{
 //	//*******************
-//	for (size_t i = 0; i < arr.m_nSize; i++)
+//	for (size_t i = 0; i < arr.size; i++)
 //	{
-//		cout << arr.m_aArr[i] << " ";
+//		cout << arr.arr[i] << " ";
 //	}
 //	cout << endl;
 //	//*******************
